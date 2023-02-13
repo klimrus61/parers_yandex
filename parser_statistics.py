@@ -1,28 +1,5 @@
 import requests
 
-test_cookies = {
-    'i': 'JkVETSgy7Tob7+3Texodr5Y9/bXqcxvikSB+QgH0rBdjy+DU0qkTD08bWnmQnluBU70r6UrJycM43b4RrjYFm8H6Auk=',
-    'yandexuid': '4450842971675421605',
-    'yuidss': '4450842971675421605',
-    'yashr': '5942129531675421606',
-    'gdpr': '0',
-    '_ym_uid': '1666712689583843156',
-    '_ym_d': '1675421609',
-    'ymex': '1990781605.yrts.1675421605#1990781605.yrtsi.1675421605',
-    'is_gdpr': '0',
-    'is_gdpr_b': 'CPvaURDFpAEoAg==',
-    'yandex_gid': '39',
-    'sae': '0:389E0230-E54D-4FF8-B464-40E66ECB53C5:p:23.1.1.1138:w:d:RU:20221025',
-    '_ym_visorc': 'w',
-    '_ym_isad': '2',
-    '_yasc': 'YnNt9Jhey3wwwesRDBPNg1HvcFfOTe1oqld00Hq5JGxWLBW8T334UZ7XpLeAqLphBsA9aoQ=',
-    'Session_id': '3:1675604057.5.0.1675604057513:9vDmuQ:24.1.2:1|1751329321.0.2|3:10265141.302706.F11WnK63WLiWH1-f6F-akLFJEnQ',
-    'sessionid2': '3:1675604057.5.0.1675604057513:9vDmuQ:24.1.2:1|1751329321.0.2|3:10265141.302706.fakesign0000000000000000000',
-    'yp': '1675689762.uc.ru#1675689762.duc.ru#1706957607.brd.6300000000#1706957607.cld.2270482#1677413051.csc.1#1675611162.gpauto.47_259666:38_941597:140:1:1675603962#1675947083.mcv.0#1990782940.pcs.0#1702315681.pgp.5_27846327#1705141875.stltp.serp_bk-map_1_1673605875#1675947083.szm.2:1600x1000:1552x861#1678019552.ygu.1#1990780984.multib.1#1675525511.nwcst.1675440000_39_1#1990964057.udn.cDp0ZXN0dGVzdHQzc3Rvdml5',
-    'L': 'AAd+YkdnAERwYlx+QUhjQ05xUmBIRFl1EyoJRxhXJU1EdyM2PkYtHg==.1675604057.15244.364497.279dc5365e5862d8823a36947c6548dc',
-    'yandex_login': 'testtestt3stoviy',
-    'ys': 'udn.cDp0ZXN0dGVzdHQzc3Rvdml5#c_chck.1378918515',
-}
 
 def parser(cookies: dict):
 
@@ -94,5 +71,3 @@ def parser(cookies: dict):
     )
     return response.json()
 
-
-print(parser(cookies=test_cookies))
