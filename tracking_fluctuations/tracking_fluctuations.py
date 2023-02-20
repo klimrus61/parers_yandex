@@ -35,8 +35,7 @@ class TrackingFluctuations():
 
         if denominator != 0:
             average_weekly_value = numerator / denominator
-            print(tracked_cell_value / average_weekly_value)
-            print(tracked_cell_value, average_weekly_value)
+            
         if tracked_cell_value > average_weekly_value * 1.1 and average_weekly_value > 0:
             self.actual_worksheet.format(tracked_cell.address,
             {"backgroundColor": {
