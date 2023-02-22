@@ -30,25 +30,25 @@ class TrackingFluctuations():
 
         previous_worksheet_index = self.actual_worksheet.index - 1
 
-        if len(last_seven_days_values) < 7:
-            while previous_worksheet_index >= 0 and len(last_seven_days_values) < 7:
-                worksheet = self.sh.get_worksheet(previous_worksheet_index)
-                user_and_app_names = worksheet.col_values(1)
-                if user_name not in user_and_app_names or app_name not in user_and_app_names:
+
+        while previous_worksheet_index >= 0 and len(last_seven_days_values) < 7:
+            worksheet = self.sh.get_worksheet(previous_worksheet_index)
+            user_and_app_names = worksheet.col_values(1)
+            if user_name not in user_and_app_names or app_name not in user_and_app_names:
+                break
+            row_index = self.row_indexes_for_worksheets[previous_worksheet_index]
+            if not row_index:
+                row_index = tracked_cell.row
+            worksheet_row_values = worksheet.row_values(row_index)
+            start_col = 15 - (tracked_cell.col % 2)
+            for col_index in range(start_col, 1, -2):
+                if len(last_seven_days_values) == 7:
                     break
-                row_index = self.row_indexes_for_worksheets[previous_worksheet_index]
-                if not row_index:
-                    row_index = tracked_cell.row
-                worksheet_row_values = worksheet.row_values(row_index)
-                start_col = 15 - (tracked_cell.col % 2)
-                for col_index in range(start_col, 1, -2):
-                    if len(last_seven_days_values) == 7:
-                        break
-                    if not worksheet_row_values[col_index]:
-                        last_seven_days_values.append(0)
-                    else:
-                        last_seven_days_values.append(float(previous_days[col_index].replace(',', '.')))
-                previous_worksheet_index += -1
+                if not worksheet_row_values[col_index]:
+                    last_seven_days_values.append(0)
+                else:
+                    last_seven_days_values.append(float(previous_days[col_index].replace(',', '.')))
+            previous_worksheet_index += -1
         count_days_of_week_with_values = sum((1 for day_value in last_seven_days_values if day_value != 0))
         if count_days_of_week_with_values > 0:
             average_previous_seven_days_sum = sum(last_seven_days_values) / count_days_of_week_with_values
