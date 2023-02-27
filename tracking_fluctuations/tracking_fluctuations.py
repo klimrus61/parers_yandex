@@ -45,15 +45,15 @@ class TrackingFluctuations():
                 if param_names[row_index] == actual_param_name:
                     actual_row_index = row_index + 1
                     break
-            worksheet_row_values = worksheet.row_values(actual_row_index)
+            actual_row_values = worksheet.row_values(actual_row_index)
             start_col = 15 - (tracked_cell.col % 2)
             for col_index in range(start_col, 1, -2):
                 if count_days == 7:
                     break
-                if not worksheet_row_values[col_index]:
+                if not actual_row_values[col_index]:
                     count_days += 1
                 else:
-                    last_seven_days_sum += float(row_values[col_index].replace(',', '.'))
+                    last_seven_days_sum += float(actual_row_values[col_index].replace(',', '.'))
                     count_days_of_week_with_values += 1
                     count_days += 1
             previous_worksheet_index += -1
@@ -101,5 +101,5 @@ if __name__ == "__main__":
         key='1ZRMLXTClSNypxb3Lk_LkEYBAwDrnqD3-opeMwiOJ0AQ', cred_file_path=CRED)
     # for param_row in range(3, 13):
     #     print(tracking_fluctuation.average_difference_check(tracking_fluctuation.actual_worksheet.cell(param_row, 9), 'Аккаунт 1', 'Название игры 1'))
-    tracking_fluctuation.actual_worksheet = tracking_fluctuation.sh.get_worksheet(1)
-    print(tracking_fluctuation.average_difference_check(tracking_fluctuation.actual_worksheet.acell('F56'), 'Аккаунт 5', 'Название игры 10'))
+    tracking_fluctuation.actual_worksheet = tracking_fluctuation.sh.get_worksheet(3)
+    print(tracking_fluctuation.average_difference_check(tracking_fluctuation.actual_worksheet.acell('C3'), 'Аккаунт 1', 'Название игры 1'))
