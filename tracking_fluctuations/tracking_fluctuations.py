@@ -45,15 +45,15 @@ class TrackingFluctuations():
                 if param_names[row_index] == actual_param_name:
                     actual_row_index = row_index + 1
                     break
-            actual_row_values = worksheet.row_values(actual_row_index)
+            worksheet_row_values = worksheet.row_values(actual_row_index)
             start_col = 15 - (tracked_cell.col % 2)
             for col_index in range(start_col, 1, -2):
                 if count_days == 7:
                     break
-                if not actual_row_values[col_index]:
+                if not worksheet_row_values[col_index]:
                     count_days += 1
                 else:
-                    last_seven_days_sum += float(actual_row_values[col_index].replace(',', '.'))
+                    last_seven_days_sum += float(worksheet_row_values[col_index].replace(',', '.'))
                     count_days_of_week_with_values += 1
                     count_days += 1
             previous_worksheet_index += -1
