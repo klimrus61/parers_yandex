@@ -7,7 +7,7 @@ class Game(Model):
     '''Модель спарсиной игры'''
     grup = CharField()
     title = CharField()
-    player_count = IntegerField()
+    active_players = IntegerField()
     total_up_votes = IntegerField()
     total_down_votes = IntegerField()
     description = TextField()

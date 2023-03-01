@@ -7,9 +7,9 @@ def get_data_from_roblox() -> list[dict]:
     [
         {"grup": str,
         "title": str,
-        "activePlayers: int,
-        "likes": int,
-        "dislikes": int,
+        "active_players: int,
+        "total_up_votes": int,
+        "total_down_votes": int,
         "description": str,},
     ]
     '''
@@ -37,7 +37,7 @@ def get_data_from_roblox() -> list[dict]:
             game_data = {
                 'grup': sort['name'],
                 'title': game['name'],
-                'player_count': game['playerCount'],
+                'active_players': game['playerCount'],
                 'total_up_votes': game['totalUpVotes'],
                 'total_down_votes': game['totalDownVotes'],
                 'description': game['gameDescription'],
