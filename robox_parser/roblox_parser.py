@@ -3,7 +3,7 @@ from fake_useragent import UserAgent
 
 
 def get_data_from_roblox() -> list[dict]:
-    '''Возвращает list имеющий структуру:
+    '''Возвращает список словарей имеющий структуру:
     [
         {"grup": str,
         "title": str,
@@ -35,7 +35,7 @@ def get_data_from_roblox() -> list[dict]:
         games = second_response.json()['games']
         for game in games:
             game_data = {
-                'grup': sort['name'],
+                'grup': sort['displayName'],
                 'title': game['name'],
                 'active_players': game['playerCount'],
                 'total_up_votes': game['totalUpVotes'],
