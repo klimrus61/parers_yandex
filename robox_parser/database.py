@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import Session
 from models import Game, Base
-from roblox_parser import get_data_from_roblox
+from roblox_parser import RobloxParser
 
 
 class Database:
@@ -36,7 +36,7 @@ class Database:
 
 
 if __name__ == "__main__":
-    data_to_game_table = get_data_from_roblox()
+    data_to_game_table = RobloxParser().get_data_to_db()
     if data_to_game_table:
         Database().write_parse_data(data_to_game_table)
     else:
