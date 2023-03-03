@@ -1,17 +1,22 @@
-from peewee import SqliteDatabase, Model, CharField, TextField, IntegerField
+from typing import Optional
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import mapped_column
 
 
-db = SqliteDatabase('roblox.db')
+class Base(DeclarativeBase):
+    pass
 
-class Game(Model):
-    '''Модель спарсиной игры'''
-    grup = CharField()
-    title = CharField()
-    active_players = IntegerField()
-    total_up_votes = IntegerField()
-    total_down_votes = IntegerField()
-    description = TextField()
+class Game(Base):
+    __tablename__ = 'roblox_game'
 
-    class Meta:
-        database = db
+    id: Mapped[int] = mapped_column(primary_key=True)
+    grup: Mapped[str]
+    title: Mapped[str]
+    active_players: Mapped[int]
+    total_up_votes: Mapped[int]
+    total_down_votes: Mapped[int]
+    description: Mapped[Optional[str]]
 
+    def __repr__(self) -> str:
+        return f"Game(id={self.id!r}, grup={self.grup!r}, title={self.title!r})"
