@@ -17,6 +17,3 @@ class Game(Base):
     total_up_votes: Mapped[int]
     total_down_votes: Mapped[int]
     description: Mapped[Optional[str]]
-
-    def __repr__(self) -> str:
-        return f"Game(id={self.id!r}, group={self.group!r}, title={self.title!r})"
