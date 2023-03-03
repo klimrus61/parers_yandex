@@ -11,7 +11,7 @@ class Game(Base):
     __tablename__ = 'roblox_game'
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    grup: Mapped[str]
+    group: Mapped[str]
     title: Mapped[str]
     active_players: Mapped[int]
     total_up_votes: Mapped[int]
@@ -19,4 +19,4 @@ class Game(Base):
     description: Mapped[Optional[str]]
 
     def __repr__(self) -> str:
-        return f"Game(id={self.id!r}, grup={self.grup!r}, title={self.title!r})"
+        return f"Game(id={self.id!r}, group={self.group!r}, title={self.title!r})"

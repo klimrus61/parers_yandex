@@ -6,7 +6,6 @@ from roblox_parser import get_data_from_roblox
 class Database:
 
     def __init__(self) -> None:
-        # db.connect()
         self.engine = create_engine("sqlite:///roblox.db")
         if not inspect(self.engine).has_table('roblox.db'):
             Base.metadata.create_all(self.engine)
@@ -17,7 +16,18 @@ class Database:
         в таблицу game базы данных roblox'''
         if data_to_game_table:
             with Session(self.engine) as session:
-                session.add_all([Game(**game) for game in data_to_game_table])
+                queries = []
+                for game in data_to_game_table:
+                    query = Game(
+                        group=game['group'],
+                        title=game['title'],
+                        active_players=game['active_players'],
+                        total_up_votes=game['total_up_votes'],
+                        total_down_votes=game['total_down_votes'],
+                        description=game['description'],
+                    )
+                    queries.append(query)
+                session.add_all(queries)
                 session.commit()
                 print('Данные успешно добавлены!')
         else:
